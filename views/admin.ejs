@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      background-color: #f4f4f4;
+    }
+    label {
+      display: inline-block;
+      text-align: left;
+      margin-bottom: 5px;
+    }
+
+    .input-container {
+      margin: 50px;
+    }
+
+    input {
+      display: block;
+      margin: 10px auto;
+      padding: 50px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    #blog{
+      display: none;
+    }
+    .data{
+      position: fixed;
+      top: 50vh;
+      right: 20rem;
+    }
+  </style>
+  <title>Styled Input Texts</title>
+</head>
+<body>
+  <!-- <marquee>
+   <h2>SOHAM GANDU, PORER BAR THEKE CTO R PHONE NA DHORLE ER THEKEO KHARAB HOBE</h2>
+</marquee> -->
+    <form action="save" method="post">
+  <div class="input-container">
+    <label for="context">Context:</label>
+    <input type="text" id="context" name="context" placeholder="Context">
+
+    <label for="headline">Headline:</label>
+    <input type="text" id="headline" name="headline" placeholder="Headline">
+
+    <label for="image">Image:</label>
+    <input type="text" id="image" name="image" placeholder="Image URL">
+
+    <label for="editor">Editor:</label>
+    <input type="text" id="editor" name="editor" placeholder="Editor">
+
+    <label for="topic">Topic:</label>
+    <input type="text" id="topic" name="topic" placeholder="Topic">
+
+    <label for="keywords">Keywords:</label>
+    <input type="text" id="keywords" name="keywords" placeholder="Keywords">
+
+    <label for="description">Description:</label>
+    <input type="text" id="description" name="description" placeholder="Description">
+    <label for="blog">Blog BBody:</label>
+    <input type="text" id="blog" name="blogBody" placeholder="blogBody">
+   
+   
+  
+    <button type="submit">Save Blog</button>
+  </div>
+  </form>
+  <label for="articleBody">Article Body:</label>
+  <select id="options">
+    <option>P</option>
+    <option>H1</option>
+    <option>H2</option>
+    <option>H3</option>
+    <option>H4</option>
+    <option>H5</option>
+    <option>H6</option>
+    <option>SPAN</option>
+    <option>A</option>
+    <option>I</option>
+  </select>
+  <input id="articleBody" name="articleBody" placeholder="Article Body" value=""></textarea>
+
+   
+  <button onclick="abbra()">Add</button>
+  <div>
+    <script>
+      
+    </script>
+  </div>
+  
+<div class="data"></div>
+</body>
+<script>
+
+  var a=[]
+  function abbra(){
+    const dataElement = document.querySelector('.data');
+
+    let k;
+    let p;
+    let xyz={}
+    k=document.getElementById('options').value
+  console.log(k)
+  p=document.getElementById('articleBody').value
+  console.log(p)
+  xyz[k]=p
+  a.push(xyz)
+  let childElement = document.querySelector('.child-element');
+ dataElement.innerHTML = '';
+  a.map(item => {
+  dataElement.insertAdjacentHTML('beforeend', `
+      <div class="cell" data-title="Full Name">
+          ${(item.H1)||(item.H2)||(item.H3)||(item.H4)||(item.H6)||(item.H5)||(item.SPAN)||(item.A)||(item.I)||(item.P)}
+      </div>
+`)
+console.log('abc',item)
+})
+  console.log(a)
+  document.getElementById('blog').value=JSON.stringify(a);
+  
+  }
+</script>
+</html>
