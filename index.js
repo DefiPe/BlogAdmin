@@ -10,6 +10,18 @@ app.get('/',(req,res)=>{
     
     res.render('admin')
 })
+app.get('/api/blogs', async (req, res) => {
+    try {
+      const query = req.query; // Assuming query parameters are sent for search
+  
+      // Use the query to find blogs in MongoDB
+      const blogs = await blog.find(query);
+  
+      res.json(blogs);
+    } catch (error) {
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+  });
 app.post('/save',(req,res)=>{
     var x=new blog(req.body)
     x.save()
